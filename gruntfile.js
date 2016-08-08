@@ -7,7 +7,7 @@ module.exports= function(grunt){
       concat: {
          options: {
             separator: '\n\n\n//-----------Seperator------------//;\n',
-            banner: '//-------------Title--------------;\n\n',
+            banner: '//-------------Title--------------//;\n\n',
          },//options
          dist: {
             src: ['contents/javascript/*js'],
@@ -32,7 +32,7 @@ module.exports= function(grunt){
           options:{   
                hostname: 'localhost',
                port: 3000,
-               base: 'builds/development/',
+               base: 'development/',
                livereload: true
           }// options
         }//server    
@@ -41,7 +41,7 @@ module.exports= function(grunt){
       watch: {
         gruntfile: {
           files: "gruntfile.js",
-          tasks: ['jshint:gruntfile']
+          // tasks: ['jshint:gruntfile']
         },
         options: {
             spawn: false
@@ -62,7 +62,7 @@ module.exports= function(grunt){
 
 grunt.loadNpmTasks('grunt-contrib-concat'); // grunt concat
 grunt.loadNpmTasks('grunt-contrib-sass'); // grunt sass
-grunt.loadNpmTasks('grunt-contrib-connect'); // grunt sass
+grunt.loadNpmTasks('grunt-contrib-connect'); // grunt connect
 grunt.loadNpmTasks('grunt-contrib-watch'); // grunt watch
 
 // grunt default tasks

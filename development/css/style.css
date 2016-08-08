@@ -1,15 +1,12 @@
-.city img.logo {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 50%;
-  max-width: 450px;
-  min-width: 250px;
-}
-
-.featuredartists {
-  border-top: 20px solid beige;
-  border-bottom: 50px solid green;
+.container {
+  width: 70%;
+  background-color: #C1C1C1;
+  color: #000000;
+  margin: auto;
+  text-align: center;
+  font-family: verdana;
+  font-size: 1.3em;
+  margin-top: 50px;
 }
 
 /*# sourceMappingURL=style.css.map */
