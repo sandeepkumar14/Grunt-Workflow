@@ -1,1 +1,3 @@
 # The following files will be ignored.
+node_modules
+.DS_Store

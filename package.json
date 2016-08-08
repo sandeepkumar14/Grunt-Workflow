@@ -1,11 +1,21 @@
 {
   "name": "grunt_workflow",
   "version": "1.0.0",
-  "description": "Grunt Project Files to Improve Workflow.",
+  "description": "Grunt Project",
   "main": "gruntfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "engines": {
+    "node": "6.3.1"
   },
   "author": "Sandeep Kumar",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    
+    },
+  "dependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-sass": "^1.0.0"
+  }
 }
