@@ -1,0 +1,15 @@
+.city img.logo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  max-width: 450px;
+  min-width: 250px;
+}
+
+.featuredartists {
+  border-top: 20px solid beige;
+  border-bottom: 50px solid green;
+}
+
+/*# sourceMappingURL=style.css.map */

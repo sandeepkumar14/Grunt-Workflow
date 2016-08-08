@@ -6,21 +6,35 @@ module.exports= function(grunt){
 
       concat: {
          options: {
-            separator: '//-----------Seperator------------//;\n',
-            banner: '//-------------title--------------;\n',
-            footer: '\n//------------footer-------------;\n'
+            separator: '\n\n\n//-----------Seperator------------//;\n',
+            banner: '//-------------Title--------------;\n\n',
          },//options
          dist: {
-            src: ['Contents/javascript/*js'],
-            dest: 'Development/javascript/allscripts.js'
+            src: ['contents/javascript/*js'],
+            dest: 'development/javascript/allscripts.js'
          }//distribution
       },//concat task
 
+      sass: {
+        dist: {
+          options: {
+            style: "expanded"
+          },//options
+          files: [{
+            src: 'contents/sass/*.scss',
+            dest: 'development/css/style.css'
+          }],//files
+        }//distribution
+      },// sass task
+
       watch: {
+         options: {
+            spawn: false
+         },
          scripts: {
-            files: ['Development/html/*.html',
-                    'development/sass/*.scss',
-                    'development/scripts/*.js'
+            files: ['contents/javascript/*.js',
+                    'contents/sass/*.scss',
+                    'development/html/*.html'
                    ],// files
             tasks: ['concat', 'sass']//tasks       
          }
@@ -30,13 +44,11 @@ module.exports= function(grunt){
    });//grunt Intialize config
 
 grunt.loadNpmTasks('grunt-contrib-concat'); // grunt concat
-grunt.loadNpmTasks('grunt-contrib-jshint'); // grunt jshint
-grunt.loadNpmTasks('grunt-contrib-uglify'); // grunt uglify
-grunt.loadNpmTasks('grunt-contrib-clean'); // grunt uglify
+grunt.loadNpmTasks('grunt-contrib-sass'); // grunt sass
 grunt.loadNpmTasks('grunt-contrib-watch'); // grunt watch
 
 // grunt default tasks
-grunt.registerTask('default',['concat', 'watch']); 
+grunt.registerTask('default',['concat','sass', 'watch']); 
 };// wrapper function
 
 }()); // use strict function 
