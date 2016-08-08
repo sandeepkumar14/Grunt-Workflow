@@ -10,48 +10,22 @@ module.exports= function(grunt){
             banner: '//-------------title--------------;\n',
             footer: '\n//------------footer-------------;\n'
          },//options
+         dist: {
+            src: ['Contents/javascript/*js'],
+            dest: 'Development/javascript/allscripts.js'
+         }//distribution
       },//concat task
 
-      jshint: {
-         options: {
-            force: true
-         },
-         ignores: ['Contents/output/anyfile.js'],
-         files: ['development/output/*.js']
-      },//jshint
-
-      uglify: {
-         development: {
-            files: {
-               '': ['']
-            },
-         },
-         options: {
-
-         }
-      },//uglify
-
       watch: {
-         options: {
-            spawn: false,
-            livereload: true
-         },// watch options
          scripts: {
-            files: ['development/html/*.html',
+            files: ['Development/html/*.html',
                     'development/sass/*.scss',
                     'development/scripts/*.js'
                    ],// files
             tasks: ['concat', 'sass']//tasks       
-
          }
       },// grunt watch
-      clean: {
-         options: {
-
-         },
-         files: ['./development/output/*'],
-         folders: ['./development/output/folder']
-      }
+      
 
    });//grunt Intialize config
 
@@ -62,7 +36,7 @@ grunt.loadNpmTasks('grunt-contrib-clean'); // grunt uglify
 grunt.loadNpmTasks('grunt-contrib-watch'); // grunt watch
 
 // grunt default tasks
-grunt.registerTask('default',['clean', 'concat', 'jshint', 'uglify', 'watch']); 
+grunt.registerTask('default',['concat', 'watch']); 
 };// wrapper function
 
 }()); // use strict function 
