@@ -1,11 +1,19 @@
 /*-------------Title--------------*/
 
 $(function() {
-   console.log('This is script 1.');
+   $('.myname').attr({
+      property1: 'value1',
+      property2: 'value2'
+   });
 });
 
 
 /* -----------Seperator------------*/
 $(function() {
-   console.log('This is script 2.');
+   $(function() {
+   $('.myname').attr({
+      property1: 'value3',
+      property2: 'value4'
+   });
+});
 });

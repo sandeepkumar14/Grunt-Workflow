@@ -4,6 +4,8 @@
 module.exports= function(grunt){
    grunt.initConfig({
 
+      pkg: grunt.file.readJSON('package.json'),
+
 // ---------------- Concat Task -------------------//
       concat: {
          options: {
@@ -33,6 +35,64 @@ module.exports= function(grunt){
             dest: 'production/libs/css/all-lib.css'
          },//CSS libs collection
       },//concat task
+
+// ------------------- jsHint Task -------------------//
+      jshint: {
+        options: {
+          force: true
+        },
+        files: ['contents/javascript/*.js']
+      }, //jshint
+
+
+// ------------------- jsHint Task -------------------//
+
+      uglify: {
+        development: {
+          files: [{
+            expanded: true,
+            src: 'contents/javascript/*.js',
+            dest: 'production/javascript/scripts.js'
+          }]
+        },
+        options: {
+          mingle: false,
+          compress: {
+            drop_console:true
+          }
+        }
+      },//uglify
+
+
+// ------------------- HTML min Task -------------------//
+
+      htmlmin: {
+        dist: {
+          options: {
+            removeComments: true,
+            collapseWhitespace: true
+          },
+          files: {
+            'production/html/index_min.html': 'development/html/index.html'
+          }
+        }
+      },
+
+
+// ------------------- CSS min -------------------//
+      cssmin: {
+        dist: {
+          options: {
+            removeComments: true,
+            collapseWhitespace: true
+          },//options
+          files: {
+            'production/css/style.css': 'development/css/*.css'
+          },//files
+        }//distribution
+      },// cssmin task
+
+
 
 // ------------------- SASS Task -------------------//
       sass: {
@@ -89,10 +149,14 @@ grunt.loadNpmTasks('grunt-contrib-concat'); // grunt concat
 grunt.loadNpmTasks('grunt-contrib-sass'); // grunt sass
 grunt.loadNpmTasks('grunt-contrib-watch'); // grunt watch
 grunt.loadNpmTasks('grunt-contrib-connect'); // grunt connect
+grunt.loadNpmTasks('grunt-contrib-jshint'); // grunt jshint
+grunt.loadNpmTasks('grunt-contrib-uglify'); // grunt uglify
+grunt.loadNpmTasks('grunt-contrib-htmlmin'); // grunt html-min
+grunt.loadNpmTasks('grunt-contrib-cssmin'); // grunt css-min
 
 
 // ------------------- Default Tasks -------------------//
-grunt.registerTask('default',['concat','sass', 'connect', 'watch']); 
+grunt.registerTask('default',['concat','sass', 'connect','jshint','uglify', 'htmlmin', 'cssmin', 'watch']); 
 };// wrapper function
 
 }()); // use strict function 

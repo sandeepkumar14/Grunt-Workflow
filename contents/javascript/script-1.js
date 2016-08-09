@@ -1,3 +1,6 @@
 $(function() {
-   console.log('This is script 1.');
+   $('.myname').attr({
+      property1: 'value1',
+      property2: 'value2'
+   });
 });
