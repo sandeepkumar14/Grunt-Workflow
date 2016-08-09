@@ -15,6 +15,13 @@ module.exports= function(grunt){
          }//distribution
       },//concat task
 
+      bower_concat: {
+        all: {
+          dest: 'development/_bower.js',
+          cssDest: 'development/css/lib/_bower.css'
+          }
+      },
+
       sass: {
         dist: {
           options: {
@@ -26,6 +33,12 @@ module.exports= function(grunt){
           }],//files
         }//distribution
       },// sass task
+
+      wiredep: {
+        task: {
+          src:'development/html/*.html'
+        }
+      },
 
       connect: {
         server: {
@@ -44,14 +57,13 @@ module.exports= function(grunt){
           // tasks: ['jshint:gruntfile']
         },
         options: {
-            spawn: false
+            spawn: false,
+            livereload: true
          },
          scripts: {
             files: ['contents/javascript/*.js',
                     'contents/sass/*.scss',
-                    'development/css/*.css',
                     'development/html/*.html',
-                    '!development/libraries/*js'
                    ],// files
             tasks: ['concat', 'sass']//tasks       
          }
@@ -62,11 +74,15 @@ module.exports= function(grunt){
 
 grunt.loadNpmTasks('grunt-contrib-concat'); // grunt concat
 grunt.loadNpmTasks('grunt-contrib-sass'); // grunt sass
-grunt.loadNpmTasks('grunt-contrib-connect'); // grunt connect
 grunt.loadNpmTasks('grunt-contrib-watch'); // grunt watch
+grunt.loadNpmTasks('grunt-contrib-connect'); // grunt connec
+grunt.loadNpmTasks('grunt-wiredep'); // grunt connect
+grunt.loadNpmTasks('grunt-bower-concat'); // grunt connect
+
+
 
 // grunt default tasks
-grunt.registerTask('default',['concat','sass', 'connect', 'watch']); 
+grunt.registerTask('default',['wiredep', 'bower_concat','concat','sass', 'connect', 'watch']); 
 };// wrapper function
 
 }()); // use strict function 
