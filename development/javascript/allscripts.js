@@ -1,11 +1,11 @@
-//-------------Title--------------//;
+/*-------------Title--------------*/
 
 $(function() {
    console.log('This is script 1.');
 });
 
 
-//-----------Seperator------------//;
+/* -----------Seperator------------*/
 $(function() {
    console.log('This is script 2.');
 });

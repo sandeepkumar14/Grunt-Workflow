@@ -4,24 +4,37 @@
 module.exports= function(grunt){
    grunt.initConfig({
 
+// ---------------- Concat Task -------------------//
       concat: {
          options: {
-            separator: '\n\n\n//-----------Seperator------------//;\n',
-            banner: '//-------------Title--------------//;\n\n',
+            separator: '\n\n\n/* -----------Seperator------------*/\n',
+            banner: '/*-------------Title--------------*/\n\n',
          },//options
          dist: {
             src: ['contents/javascript/*js'],
             dest: 'development/javascript/allscripts.js'
-         }//distribution
+         },//Custom JS files
+         devLibsJS: {
+            src: ['contents/lib/angular/angular.js', 'contents/lib/angular-resource/angular-resource.js',
+            'contents/lib/angular-route/angular-route.js','contents/lib/jquery/index.js','contents/lib/jquery-migrate/index.js','contents/lib/bootstrap/dist/bootstrap.js'],
+            dest: 'development/lib/js/all-libs.js'
+         },//JS libs collection
+          devLibsCSS: {
+            src: ['contents/lib/bootstrap/dist/css/bootstrap.css'],
+            dest: 'development/lib/css/all-lib.css'
+         },//CSS libs collection
+         prodLibsJS: {
+            src: ['contents/lib/angular/angular.min.js', 'contents/lib/angular-resource/angular-resource.min.js',
+            'contents/lib/angular-route/angular-route.min.js','contents/lib/jquery_min/index.js','contents/lib/jquery-migrate_min/index.js','contents/lib/bootstrap/dist/js/bootstrap.min.js'],
+            dest: 'production/libs/js/all-libs.js'
+         },//JS libs collection
+          prodLibsCSS: {
+            src: ['contents/lib/bootstrap/dist/css/bootstrap.min.css'],
+            dest: 'production/libs/css/all-lib.css'
+         },//CSS libs collection
       },//concat task
 
-      bower_concat: {
-        all: {
-          dest: 'development/_bower.js',
-          cssDest: 'development/css/lib/_bower.css'
-          }
-      },
-
+// ------------------- SASS Task -------------------//
       sass: {
         dist: {
           options: {
@@ -34,11 +47,7 @@ module.exports= function(grunt){
         }//distribution
       },// sass task
 
-      wiredep: {
-        task: {
-          src:'development/html/*.html'
-        }
-      },
+// ------------------- Connect Task -------------------//
 
       connect: {
         server: {
@@ -50,6 +59,8 @@ module.exports= function(grunt){
           }// options
         }//server    
       },//connect task
+
+// ------------------- Watch Task -------------------//
 
       watch: {
         gruntfile: {
@@ -72,17 +83,16 @@ module.exports= function(grunt){
 
    });//grunt Intialize config
 
+// ------------------- Task Registration -------------------//
+
 grunt.loadNpmTasks('grunt-contrib-concat'); // grunt concat
 grunt.loadNpmTasks('grunt-contrib-sass'); // grunt sass
 grunt.loadNpmTasks('grunt-contrib-watch'); // grunt watch
-grunt.loadNpmTasks('grunt-contrib-connect'); // grunt connec
-grunt.loadNpmTasks('grunt-wiredep'); // grunt connect
-grunt.loadNpmTasks('grunt-bower-concat'); // grunt connect
+grunt.loadNpmTasks('grunt-contrib-connect'); // grunt connect
 
 
-
-// grunt default tasks
-grunt.registerTask('default',['wiredep', 'bower_concat','concat','sass', 'connect', 'watch']); 
+// ------------------- Default Tasks -------------------//
+grunt.registerTask('default',['concat','sass', 'connect', 'watch']); 
 };// wrapper function
 
 }()); // use strict function 
